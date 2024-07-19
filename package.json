@@ -3,10 +3,12 @@
   "version": "1.0.6",
   "description": "",
   "type": "module",
-  "bin": "./index.mts",
+  "bin": "./dist/index.mjs",
   "main": "index.mts",
   "scripts": {
-    "start": "node ./index.mts"
+    "start": "node ./index.mts",
+    "build": "tsc",
+    "publish": "npm run build && npm version patch && npm publish"
   },
   "author": "",
   "license": "ISC",
