@@ -3,7 +3,7 @@
   "version": "1.0.11",
   "description": "",
   "type": "module",
-  "bin": "./dist/index.mjs",
+  "bin": "./build/index.mjs",
   "main": "index.mts",
   "scripts": {
     "start": "node ./index.mts",
