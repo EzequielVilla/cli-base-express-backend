@@ -2,13 +2,13 @@
   "name": "cli-base-express-backend",
   "version": "1.0.13",
   "description": "",
-  "type": "commonjs",
+  "type": "module",
   "bin": "./build/index.mjs",
   "main": "index.mts",
   "scripts": {
-    "start": "node ./index.mts",
+    "start": "node ./build/index.mjs",
     "build": "tsc",
-    "npm:publish": "npm run build && npm version patch && npm publish"
+    "npm:publish": "npm run build && npm version patch && npm publish && git add package.json && git commit -m 'publish' && git push"
   },
   "author": "",
   "license": "ISC",

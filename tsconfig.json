@@ -1,9 +1,9 @@
 {
   "compilerOptions": {
     "lib": ["ES5", "ES6", "es2019", "DOM"],
-    "target": "es6",
+    "target": "ESNext",
     "sourceMap": true,
-    "module": "commonjs",
+    "module": "ESNext",
     "moduleResolution": "node",
     "outDir": "./build",
     "emitDecoratorMetadata": true,

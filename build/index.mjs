@@ -1,14 +1,9 @@
 #!/usr/bin/env node
-"use strict";
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
-Object.defineProperty(exports, "__esModule", { value: true });
-const inquirer_1 = __importDefault(require("inquirer"));
-const child_process_1 = require("child_process");
+import inquirer from "inquirer";
+import { execSync } from "child_process";
 const runCommand = (command) => {
     try {
-        (0, child_process_1.execSync)(command, { stdio: "inherit" });
+        execSync(command, { stdio: "inherit" });
     }
     catch (error) {
         console.error(`Failed to execute ${command}`, error);
@@ -58,7 +53,7 @@ else {
     console.log("Error: Unknown command");
 }
 const projectName = process.argv[2];
-inquirer_1.default
+inquirer
     .prompt(questions)
     .then((answers) => {
     const { dbSelector } = answers;
