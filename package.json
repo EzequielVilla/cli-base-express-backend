@@ -8,7 +8,7 @@
   "scripts": {
     "start": "node ./index.mts",
     "build": "tsc",
-    "publish": "npm run build && npm version patch && npm publish"
+    "npm:publish": "npm run build && npm version patch && npm publish"
   },
   "author": "",
   "license": "ISC",
