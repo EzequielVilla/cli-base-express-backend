@@ -3,7 +3,7 @@
   "version": "1.0.1",
   "description": "",
   "type": "module",
-  "bin": ".index.mjs",
+  "bin": "./index.mjs",
   "main": "index.mjs",
   "scripts": {
     "start": "node ./index.mjs"
