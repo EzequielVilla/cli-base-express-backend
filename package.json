@@ -2,7 +2,7 @@
   "name": "cli-base-express-backend",
   "version": "1.0.12",
   "description": "",
-  "type": "module",
+  "type": "commonjs",
   "bin": "./build/index.mjs",
   "main": "index.mts",
   "scripts": {
