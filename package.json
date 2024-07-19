@@ -3,10 +3,10 @@
   "version": "1.0.3",
   "description": "",
   "type": "module",
-  "bin": "./index.mjs",
-  "main": "index.mjs",
+  "bin": "./index.mts",
+  "main": "index.mts",
   "scripts": {
-    "start": "node ./index.mjs"
+    "start": "node ./index.mts"
   },
   "author": "",
   "license": "ISC",
