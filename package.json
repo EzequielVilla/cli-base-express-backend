@@ -1,6 +1,6 @@
 {
   "name": "test-project",
-  "version": "1.0.15",
+  "version": "1.0.16",
   "description": "",
   "type": "module",
   "bin": "./build/index.mjs",
