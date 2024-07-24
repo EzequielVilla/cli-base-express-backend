@@ -1,67 +1,48 @@
 #!/usr/bin/env node
 
-import inquirer from "inquirer";
-import { execSync } from "child_process";
+import { getDBSelector } from "./inputs/dbs.mjs";
+import { dbCommand, runCommand } from "./lib/commands.mjs";
 
-const runCommand = (command) => {
-  try {
-    execSync(command, { stdio: "inherit" });
-  } catch (error) {
-    console.error(`Failed to execute ${command}`, error);
-    return false;
-  }
-  return true;
-};
+async function main() {
+  const args = process.argv.slice(2);
 
-const questions: any = [
-  {
-    type: "list",
-    name: "dbSelector",
-    message: "What is your DB preferred for the project?",
-    choices: [
-      {
-        name: "MongoDB",
-        value: "mongodb",
-      },
-      {
-        name: "PostgreSQL-sequelize",
-        value: "postgresql-sequelize",
-      },
-    ],
-  },
-];
-const args = process.argv.slice(2);
+  // Check if the first argument is 'new'
+  if (args[0] === "new") {
+    // Get the project name from the second argument
+    const projectName = args[1];
+    if (projectName) {
+      const dbSelected = await getDBSelector();
+      dbCommand(dbSelected, projectName);
+      //
+      // OTHER COMMANDS
 
-// Check if the first argument is 'new'
-if (args[0] === "new") {
-  // Get the project name from the second argument
-  const projectName = args[1];
-
-  if (projectName) {
-    const gitCloneCommand = `git clone --depth 1 https://github.com/EzequielVilla/base-express-backend ${projectName}`;
-    const installCommand = `cd ${projectName} && npm install`;
-    console.log("Cloning repository...");
-    const checkedOut = runCommand(gitCloneCommand);
-    if (!checkedOut) process.exit(-1);
-    const installedDeps = runCommand(installCommand);
-    if (!installedDeps) process.exit(-1);
-    console.log(
-      "Project created successfully with the following configuration:"
-    );
+      changeProjectNameInPackageJson(projectName);
+      addDotEnvToGitIgnore();
+      // installDeps(projectName);
+      console.log("EXIT");
+    } else {
+      console.log("Error: Project name is required");
+    }
   } else {
-    console.log("Error: Project name is required");
+    console.log("Error: Unknown command");
   }
-} else {
-  console.log("Error: Unknown command");
 }
-const projectName = process.argv[2];
+main();
 
-inquirer
-  .prompt(questions)
-  .then((answers) => {
-    const { dbSelector } = answers;
-    console.log(`DB selector: ${dbSelector}`);
-  })
-  .catch((error) => {
-    console.error("Error creating project:", error);
-  });
+function installDeps(projectName: string) {
+  // const gitCloneCommand = `git clone --depth 1 https://github.com/EzequielVilla/base-express-backend ${projectName}`;
+  const installCommand = `cd ${projectName} && npm install`;
+  console.log("Cloning repository...");
+  // const checkedOut = runCommand(gitCloneCommand);
+  // if (!checkedOut) process.exit(-1);
+  const installedDeps = runCommand(installCommand);
+  if (!installedDeps) process.exit(-1);
+  console.log("Project created successfully with the following configuration:");
+}
+function changeProjectNameInPackageJson(projectName: string) {
+  //
+}
+
+function addDotEnvToGitIgnore() {
+  //
+}
