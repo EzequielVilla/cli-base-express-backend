@@ -15,8 +15,14 @@ export function dbCommand(dbBranch: DbBranches, projectName: string) {
   const clone =
     dbBranch != "other"
       ? `git clone --depth 1 -b ${dbBranch} https://github.com/EzequielVilla/base-express-backend ${projectName} `
-      : `git clone --depth 1 https://github.com/EzequielVilla/base-express-backend ${projectName}`;
+      : `git clone --depth 1 -b main https://github.com/EzequielVilla/base-express-backend ${projectName}`;
   const installedDB = runCommand(clone);
   if (!installedDB) process.exit(-1);
   console.log(`Basic template with ${dbBranch} downloaded successfully`);
+}
+
+export function moveTerminalToRoot(projectName: string) {
+  const rootCommand = `cd ${projectName}`;
+  const checkedOut = runCommand(rootCommand);
+  if (!checkedOut) process.exit(-1);
 }

@@ -1,5 +1,5 @@
 {
-  "name": "cli-base-express-backend",
+  "name": "test-project",
   "version": "1.0.15",
   "description": "",
   "type": "module",
@@ -8,7 +8,8 @@
   "scripts": {
     "start": "node ./build/index.mjs",
     "build": "tsc",
-    "npm:publish": "npm run build && npm version patch && npm publish && git add package.json && git commit -m 'publish' && git push"
+    "test": "npm run build && node ./build/index.mjs new test-project",
+    "npm:publish": "npm run build && npm version patch && npm publish && git add package.json && git commit -am 'publish' && git push"
   },
   "author": "",
   "license": "ISC",
