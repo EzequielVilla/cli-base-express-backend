@@ -9,7 +9,7 @@
     "start": "node ./build/index.mjs",
     "build": "tsc",
     "test": "npm run build && node ./build/index.mjs new test-project",
-    "npm:publish": "npm run build && npm version patch && npm publish && git add package.json && git commit -am 'publish' && git push"
+    "npm:publish": "npm run build && npm version patch && npm publish "
   },
   "author": "",
   "license": "ISC",

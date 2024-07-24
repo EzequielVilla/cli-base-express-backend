@@ -17,7 +17,7 @@ async function main() {
             // OTHER COMMANDS
             changeProjectNameInPackageJson(projectName);
             addDotEnvToGitIgnore(projectName);
-            // installDeps(projectName);
+            installDeps();
             console.log("EXIT");
         }
         else {
@@ -29,16 +29,13 @@ async function main() {
     }
 }
 main();
-function installDeps(projectName) {
-    // const gitCloneCommand = `git clone --depth 1 https://github.com/EzequielVilla/base-express-backend ${projectName}`;
-    const installCommand = `cd ${projectName} && npm install`;
-    console.log("Cloning repository...");
-    // const checkedOut = runCommand(gitCloneCommand);
-    // if (!checkedOut) process.exit(-1);
+function installDeps() {
+    const installCommand = `npm install`;
+    console.log("Installing dependencies...");
     const installedDeps = runCommand(installCommand);
     if (!installedDeps)
         process.exit(-1);
-    console.log("Project created successfully with the following configuration:");
+    console.log("Project created successfully");
 }
 function changeProjectNameInPackageJson(projectName) {
     const currentDir = process.cwd();
