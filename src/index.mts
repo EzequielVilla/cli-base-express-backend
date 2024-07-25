@@ -5,6 +5,7 @@ import {
   changePackageJson,
   dbCommand,
   installDeps,
+  reinstallGit,
 } from "./lib/commands.mjs";
 
 async function main() {
@@ -20,6 +21,7 @@ async function main() {
       changePackageJson(projectName);
       addDotEnvToGitIgnore(projectName);
       installDeps(projectName);
+      reinstallGit(projectName);
       console.log(
         `Go to the project folder: cd ${projectName} and start developing! `
       );

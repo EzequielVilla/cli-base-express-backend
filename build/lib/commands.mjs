@@ -73,7 +73,7 @@ export function addDotEnvToGitIgnore(projectName) {
     }
 }
 export function reinstallGit(projectName) {
-    const reinstallGit = `cd ${projectName} && rm -r .git && git init`;
+    const reinstallGit = `cd ${projectName} && rm -rf .git && git init`;
     const reinstalledGit = runCommand(reinstallGit);
     if (!reinstalledGit)
         process.exit(-1);

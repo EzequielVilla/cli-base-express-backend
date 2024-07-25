@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 import { getDBSelector } from "./inputs/dbs.mjs";
-import { addDotEnvToGitIgnore, changePackageJson, dbCommand, installDeps, } from "./lib/commands.mjs";
+import { addDotEnvToGitIgnore, changePackageJson, dbCommand, installDeps, reinstallGit, } from "./lib/commands.mjs";
 async function main() {
     const args = process.argv.slice(2);
     // Check if the first argument is 'new'
@@ -13,6 +13,7 @@ async function main() {
             changePackageJson(projectName);
             addDotEnvToGitIgnore(projectName);
             installDeps(projectName);
+            reinstallGit(projectName);
             console.log(`Go to the project folder: cd ${projectName} and start developing! `);
         }
         else {
