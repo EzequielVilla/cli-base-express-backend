@@ -15,7 +15,7 @@ async function main() {
             // OTHER COMMANDS
             changeProjectNameInPackageJson(projectName);
             addDotEnvToGitIgnore(projectName);
-            installDeps();
+            installDeps(projectName);
             console.log("EXIT");
         }
         else {

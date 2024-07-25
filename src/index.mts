@@ -18,12 +18,12 @@ async function main() {
     if (projectName) {
       const dbSelected = await getDBSelector();
       dbCommand(dbSelected, projectName);
-      moveTerminalToRoot(projectName);
+      // moveTerminalToRoot(projectName);
       //
       // OTHER COMMANDS
       changeProjectNameInPackageJson(projectName);
       addDotEnvToGitIgnore(projectName);
-      installDeps();
+      installDeps(projectName);
       console.log("EXIT");
     } else {
       console.log("Error: Project name is required");
