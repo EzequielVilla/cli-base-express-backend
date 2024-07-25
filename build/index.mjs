@@ -40,6 +40,7 @@ function installDeps() {
 function changeProjectNameInPackageJson(projectName) {
     const currentDir = process.cwd();
     const filePath = join(currentDir, `${projectName}/package.json`);
+    console.log({ filePath });
     let newPackageJson;
     try {
         const packageJson = readFileSync(filePath, "utf-8");
