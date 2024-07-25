@@ -38,7 +38,7 @@ export function changePackageJson(projectName: string) {
     const packageJson = readFileSync(filePath, "utf-8");
     const packageJsonObj = JSON.parse(packageJson);
     packageJsonObj.name = projectName;
-    packageJsonObj.version = "1.0.24";
+    packageJsonObj.version = "1.0.00";
     newPackageJson = JSON.stringify(packageJsonObj, null, 2); // set view format of file to JSON
   } catch (error) {
     console.error("Error reading the file:", error);
