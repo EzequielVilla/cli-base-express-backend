@@ -28,7 +28,7 @@ export function installDeps(projectName) {
         process.exit(-1);
     console.log("Project created successfully");
 }
-export function changeProjectNameInPackageJson(projectName) {
+export function changePackageJson(projectName) {
     const currentDir = process.cwd();
     const filePath = join(currentDir, `${projectName}/package.json`);
     let newPackageJson;
@@ -36,6 +36,7 @@ export function changeProjectNameInPackageJson(projectName) {
         const packageJson = readFileSync(filePath, "utf-8");
         const packageJsonObj = JSON.parse(packageJson);
         packageJsonObj.name = projectName;
+        packageJsonObj.version = "1.0.24";
         newPackageJson = JSON.stringify(packageJsonObj, null, 2); // set view format of file to JSON
     }
     catch (error) {
@@ -70,6 +71,11 @@ export function addDotEnvToGitIgnore(projectName) {
         console.error("Error writing the file:", error);
         process.exit(1);
     }
-    //
+}
+export function reinstallGit(projectName) {
+    const reinstallGit = `cd ${projectName} && rm -r .git && git init`;
+    const reinstalledGit = runCommand(reinstallGit);
+    if (!reinstalledGit)
+        process.exit(-1);
 }
 //# sourceMappingURL=commands.mjs.map

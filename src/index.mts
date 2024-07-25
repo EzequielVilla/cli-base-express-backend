@@ -2,7 +2,7 @@
 import { getDBSelector } from "./inputs/dbs.mjs";
 import {
   addDotEnvToGitIgnore,
-  changeProjectNameInPackageJson,
+  changePackageJson,
   dbCommand,
   installDeps,
 } from "./lib/commands.mjs";
@@ -17,7 +17,7 @@ async function main() {
     if (projectName) {
       const dbSelected = await getDBSelector();
       dbCommand(dbSelected, projectName);
-      changeProjectNameInPackageJson(projectName);
+      changePackageJson(projectName);
       addDotEnvToGitIgnore(projectName);
       installDeps(projectName);
       console.log(
