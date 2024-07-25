@@ -29,11 +29,7 @@ export function moveTerminalToRoot(projectName: string) {
   if (!checkedOut) process.exit(-1);
 }
 export function installDeps(projectName: string) {
-  const rootCommand = `cd ${projectName}`;
-  const checkedOut = runCommand(rootCommand);
-  if (!checkedOut) process.exit(-1);
-
-  const installCommand = `npm install`;
+  const installCommand = `cd ${projectName} && npm install`;
   console.log("Installing dependencies...");
   const installedDeps = runCommand(installCommand);
   if (!installedDeps) process.exit(-1);
