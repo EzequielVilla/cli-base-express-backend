@@ -20,12 +20,6 @@ export function dbCommand(dbBranch, projectName) {
         process.exit(-1);
     console.log(`Basic template with ${dbBranch} downloaded successfully`);
 }
-export function moveTerminalToRoot(projectName) {
-    const rootCommand = `cd ${projectName}`;
-    const checkedOut = runCommand(rootCommand);
-    if (!checkedOut)
-        process.exit(-1);
-}
 export function installDeps(projectName) {
     const installCommand = `cd ${projectName} && npm install`;
     console.log("Installing dependencies...");

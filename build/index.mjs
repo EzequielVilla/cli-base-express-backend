@@ -10,13 +10,10 @@ async function main() {
         if (projectName) {
             const dbSelected = await getDBSelector();
             dbCommand(dbSelected, projectName);
-            // moveTerminalToRoot(projectName);
-            //
-            // OTHER COMMANDS
             changeProjectNameInPackageJson(projectName);
             addDotEnvToGitIgnore(projectName);
             installDeps(projectName);
-            console.log("EXIT");
+            console.log(`Go to the project folder: cd ${projectName} and start developing! `);
         }
         else {
             console.log("Error: Project name is required");
