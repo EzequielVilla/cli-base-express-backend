@@ -1,6 +1,6 @@
 {
   "name": "cli-base-express-backend",
-  "version": "1.0.23",
+  "version": "1.0.24",
   "description": "",
   "type": "module",
   "bin": "./build/index.mjs",
